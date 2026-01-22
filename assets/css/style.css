@@ -124,7 +124,7 @@ a {
 .hero {
     position: relative;
     min-height: 600px;
-    background: linear-gradient(135deg, var(--primary-color) 0%, #1e40af 100%);
+background: url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') no-repeat center center;    background-size: cover;
     display: flex;
     align-items: center;
     justify-content: center;
