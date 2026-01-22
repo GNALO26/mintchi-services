@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmation de commande - MINTCHI J. SERVICES</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .confirmation-section {
+            padding: 80px 0;
+            background: var(--light-color);
+            min-height: 70vh;
+        }
+
+        .confirmation-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .success-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--secondary-color), #059669);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            animation: scaleIn 0.5s ease;
+        }
+
+        .success-icon i {
+            font-size: 3rem;
+            color: var(--white);
+        }
+
+        .confirmation-card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .confirmation-card h1 {
+            color: var(--dark-color);
+            margin-bottom: 15px;
+            font-size: 2rem;
+        }
+
+        .confirmation-card .subtitle {
+            color: var(--text-color);
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        .order-details {
+            background: var(--light-color);
+            padding: 25px;
+            border-radius: 10px;
+            margin: 30px 0;
+            text-align: left;
+        }
+
+        .order-details h3 {
+            color: var(--dark-color);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .detail-row:last-child {
+            border-bottom: none;
+        }
+
+        .detail-row.highlight {
+            background: var(--white);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border: 2px solid var(--primary-color);
+        }
+
+        .detail-row.highlight strong {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+        }
+
+        .payment-section {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 30px;
+        }
+
+        .payment-section h2 {
+            text-align: center;
+            color: var(--dark-color);
+            margin-bottom: 25px;
+        }
+
+        .payment-steps {
+            display: grid;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .payment-step {
+            display: flex;
+            gap: 15px;
+            align-items: start;
+            padding: 20px;
+            background: var(--light-color);
+            border-radius: 10px;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-color);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .step-content h4 {
+            color: var(--dark-color);
+            margin-bottom: 5px;
+        }
+
+        .step-content p {
+            color: var(--text-color);
+            font-size: 0.95rem;
+        }
+
+        .payment-button {
+            display: block;
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, var(--secondary-color), #059669);
+            color: var(--white);
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-bottom: 15px;
+        }
+
+        .payment-button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .payment-button i {
+            margin-right: 10px;
+        }
+
+        .alternative-actions {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .alternative-actions .btn {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        @keyframes scaleIn {
+            from {
+                transform: scale(0);
+            }
+            to {
+                transform: scale(1);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .confirmation-card,
+            .payment-section {
+                padding: 25px;
+            }
+
+            .alternative-actions {
+                flex-direction: column;
+            }
+
+            .alternative-actions .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <div class="logo">
+                        <i class="fas fa-print"></i>
+                        <span>MINTCHI J. SERVICES</span>
+                    </div>
+                    <ul class="nav-menu" id="navMenu">
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="services.html">Photocopie</a></li>
+                        <li><a href="immobilier.html">Immobilier</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                    <div class="hamburger" id="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Confirmation Section -->
+    <section class="confirmation-section">
+        <div class="container">
+            <div class="confirmation-container">
+                <!-- Success Message -->
+                <div class="confirmation-card">
+                    <div class="success-icon">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <h1>Commande envoyée avec succès !</h1>
+                    <p class="subtitle">Votre commande a été transmise sur WhatsApp. Veuillez procéder au paiement pour finaliser.</p>
+
+                    <div class="order-details" id="orderDetails">
+                        <h3><i class="fas fa-receipt"></i> Détails de votre commande</h3>
+                        <!-- Content will be filled by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Payment Section -->
+                <div class="payment-section">
+                    <h2><i class="fas fa-credit-card"></i> Finaliser votre paiement</h2>
+
+                    <div class="payment-steps">
+                        <div class="payment-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>Documents envoyés sur WhatsApp</h4>
+                                <p>Vos documents ont été transmis au +229 01 96 69 64 85 pour validation</p>
+                            </div>
+                        </div>
+
+                        <div class="payment-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>Paiement en ligne (80%)</h4>
+                                <p>Cliquez sur le bouton ci-dessous pour payer 80% du montant via KKiaPay</p>
+                            </div>
+                        </div>
+
+                        <div class="payment-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>Paiement à la livraison (20%)</h4>
+                                <p>Le reste sera à régler lors de la réception de vos documents</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="payment-button" id="payButton">
+                        <i class="fas fa-shield-alt"></i>
+                        Payer maintenant avec KKiaPay
+                    </button>
+
+                    <div class="alternative-actions">
+                        <a href="index.html" class="btn btn-secondary">
+                            <i class="fas fa-home"></i> Retour à l'accueil
+                        </a>
+                        <a href="services.html" class="btn btn-primary">
+                            <i class="fas fa-plus"></i> Nouvelle commande
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Help Box -->
+                <div class="alert alert-info" style="margin-top: 20px;">
+                    <i class="fas fa-question-circle"></i>
+                    <div>
+                        <strong>Besoin d'aide ?</strong>
+                        <p>Contactez-nous sur WhatsApp au +229 01 96 69 64 85 ou par téléphone pour toute question.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>MINTCHI J. SERVICES</h3>
+                    <p>Votre partenaire de confiance pour l'impression professionnelle et l'immobilier à Cotonou.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/22901966985" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="services.html">Photocopie</a></li>
+                        <li><a href="services.html">Impression</a></li>
+                        <li><a href="immobilier.html">Immobilier</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-phone"></i> +229 01 96 69 64 85</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Cotonou, Bénin</li>
+                        <li><i class="fas fa-clock"></i> Lun-Sam: 8h-19h</li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Paiement Sécurisé</h4>
+                    <p>Nous acceptons les paiements via:</p>
+                    <div class="payment-methods">
+                        <img src="https://kkiapay.me/assets/images/logo.png" alt="KKiaPay" style="height: 30px;">
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 MINTCHI J. SERVICES. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- KKiaPay SDK -->
+    <script src="https://cdn.kkiapay.me/k.js"></script>
+    
+    <script src="assets/js/main.js"></script>
+    <script>
+        // Load order data from localStorage
+        const orderData = JSON.parse(localStorage.getItem('orderData') || '{}');
+
+        // Display order details
+        if (orderData.customerName) {
+            const detailsDiv = document.getElementById('orderDetails');
+            
+            let html = `
+                <div class="detail-row">
+                    <span>Client:</span>
+                    <strong>${orderData.customerName}</strong>
+                </div>
+                <div class="detail-row">
+                    <span>Téléphone:</span>
+                    <strong>${orderData.customerPhone}</strong>
+                </div>
+                <div class="detail-row">
+                    <span>Documents:</span>
+                    <strong>${orderData.files ? orderData.files.length : 0}</strong>
+                </div>
+                <div class="detail-row">
+                    <span>Total de pages:</span>
+                    <strong>${orderData.totalPages * orderData.copies}</strong>
+                </div>
+                <div class="detail-row">
+                    <span>Exemplaires:</span>
+                    <strong>${orderData.copies}</strong>
+                </div>
+                <div class="detail-row">
+                    <span>Adresse de livraison:</span>
+                    <strong>${orderData.deliveryAddress}</strong>
+                </div>
+                <div class="detail-row highlight">
+                    <span>Montant à payer maintenant (80%):</span>
+                    <strong>${orderData.payNow} FCFA</strong>
+                </div>
+                <div class="detail-row">
+                    <span>À payer à la livraison (20%):</span>
+                    <strong>${orderData.payLater} FCFA</strong>
+                </div>
+            `;
+            
+            detailsDiv.innerHTML += html;
+        } else {
+            // Redirect to home if no order data
+            window.location.href = 'index.html';
+        }
+
+        // Initialize KKiaPay payment
+        document.getElementById('payButton').addEventListener('click', function() {
+            openKkiapayWidget({
+                amount: orderData.payNow || 100,
+                position: "center",
+                callback: "https://votre-site.com/confirmation", // URL de retour après paiement
+                data: JSON.stringify({
+                    orderId: Date.now(),
+                    customerName: orderData.customerName,
+                    customerPhone: orderData.customerPhone
+                }),
+                theme: "#2563eb",
+                key: "VOTRE_CLE_PUBLIQUE_KKIAPAY", // À REMPLACER
+                sandbox: true // Mettre à false en production
+            });
+        });
+
+        // KKiaPay success callback
+        function successHandler(response) {
+            console.log('Paiement réussi:', response);
+            
+            // Save payment info
+            localStorage.setItem('paymentSuccess', JSON.stringify({
+                transactionId: response.transactionId,
+                amount: orderData.payNow,
+                date: new Date().toISOString()
+            }));
+
+            // Show success message
+            alert('✅ Paiement effectué avec succès ! Vous recevrez une confirmation par WhatsApp.');
+            
+            // Send confirmation to WhatsApp
+            const message = `✅ *PAIEMENT CONFIRMÉ*\n\nTransaction: ${response.transactionId}\nMontant: ${orderData.payNow} FCFA\nClient: ${orderData.customerName}`;
+            const whatsappUrl = `https://wa.me/22901966985?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        // Add success handler to window for KKiaPay callback
+        window.successHandler = successHandler;
+    </script>
+</body>
+</html>

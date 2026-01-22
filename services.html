@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commander une Photocopie - MINTCHI J. SERVICES</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/photocopie.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <div class="logo">
+                        <i class="fas fa-print"></i>
+                        <span>MINTCHI J. SERVICES</span>
+                    </div>
+                    <ul class="nav-menu" id="navMenu">
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="services.html" class="active">Photocopie</a></li>
+                        <li><a href="immobilier.html">Immobilier</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                    <div class="hamburger" id="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1><i class="fas fa-copy"></i> Commander une Photocopie</h1>
+            <p>Envoyez vos documents et recevez-les rapidement</p>
+        </div>
+    </section>
+
+    <!-- Order Form Section -->
+    <section class="order-section">
+        <div class="container">
+            <div class="order-wrapper">
+                <!-- Pricing Info -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <i class="fas fa-tag"></i>
+                        <h3>Tarification</h3>
+                    </div>
+                    <div class="price-display">
+                        <span class="price">10 FCFA</span>
+                        <span class="per">par page</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Impression de qualité</li>
+                        <li><i class="fas fa-check"></i> Livraison rapide</li>
+                        <li><i class="fas fa-check"></i> Paiement sécurisé (80% en ligne)</li>
+                        <li><i class="fas fa-check"></i> 20% à la livraison</li>
+                    </ul>
+                    
+                    <div class="order-summary" id="orderSummary" style="display: none;">
+                        <h4>Récapitulatif</h4>
+                        <div class="summary-item">
+                            <span>Nombre de pages:</span>
+                            <strong id="summaryPages">0</strong>
+                        </div>
+                        <div class="summary-item">
+                            <span>Exemplaires:</span>
+                            <strong id="summaryCopies">1</strong>
+                        </div>
+                        <div class="summary-item">
+                            <span>Total pages:</span>
+                            <strong id="summaryTotalPages">0</strong>
+                        </div>
+                        <div class="summary-divider"></div>
+                        <div class="summary-item total">
+                            <span>Total:</span>
+                            <strong id="summaryTotal">0 FCFA</strong>
+                        </div>
+                        <div class="summary-item">
+                            <span>À payer maintenant (80%):</span>
+                            <strong id="summaryPayNow" class="highlight">0 FCFA</strong>
+                        </div>
+                        <div class="summary-item">
+                            <span>À la livraison (20%):</span>
+                            <strong id="summaryPayLater">0 FCFA</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Order Form -->
+                <div class="order-form-card">
+                    <form id="orderForm">
+                        <!-- Step 1: Upload Documents -->
+                        <div class="form-step active" id="step1">
+                            <h2>Étape 1: Vos Documents</h2>
+                            
+                            <div class="form-group">
+                                <label for="customerName">
+                                    <i class="fas fa-user"></i> Votre nom complet *
+                                </label>
+                                <input type="text" id="customerName" required placeholder="Ex: Jean Dupont">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="customerPhone">
+                                    <i class="fas fa-phone"></i> Numéro de téléphone *
+                                </label>
+                                <input type="tel" id="customerPhone" required placeholder="Ex: +229 XX XX XX XX XX">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="fileUpload">
+                                    <i class="fas fa-file-upload"></i> Télécharger vos documents *
+                                </label>
+                                <div class="upload-area" id="uploadArea">
+                                    <input type="file" id="fileUpload" multiple accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" hidden>
+                                    <div class="upload-content">
+                                        <i class="fas fa-cloud-upload-alt"></i>
+                                        <p>Cliquez ou glissez vos fichiers ici</p>
+                                        <span>PDF, DOC, DOCX, JPG, PNG (Max 10 Mo par fichier)</span>
+                                    </div>
+                                </div>
+                                <div id="fileList" class="file-list"></div>
+                            </div>
+
+                            <button type="button" class="btn btn-primary btn-next" onclick="nextStep(2)">
+                                Suivant <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+
+                        <!-- Step 2: Configure Order -->
+                        <div class="form-step" id="step2">
+                            <h2>Étape 2: Configuration</h2>
+
+                            <div id="documentsConfig"></div>
+
+                            <div class="form-group">
+                                <label for="copies">
+                                    <i class="fas fa-copy"></i> Nombre d'exemplaires
+                                </label>
+                                <input type="number" id="copies" min="1" max="100" value="1" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="deliveryAddress">
+                                    <i class="fas fa-map-marker-alt"></i> Adresse de livraison *
+                                </label>
+                                <textarea id="deliveryAddress" rows="3" required placeholder="Ex: Akpakpa, près de la mairie"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="notes">
+                                    <i class="fas fa-sticky-note"></i> Instructions spéciales (optionnel)
+                                </label>
+                                <textarea id="notes" rows="2" placeholder="Ex: Reliure, agrafage, etc."></textarea>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="button" class="btn btn-secondary" onclick="prevStep(1)">
+                                    <i class="fas fa-arrow-left"></i> Retour
+                                </button>
+                                <button type="button" class="btn btn-primary btn-next" onclick="nextStep(3)">
+                                    Suivant <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Step 3: Confirmation -->
+                        <div class="form-step" id="step3">
+                            <h2>Étape 3: Confirmation</h2>
+
+                            <div class="confirmation-box">
+                                <h3><i class="fas fa-info-circle"></i> Récapitulatif de votre commande</h3>
+                                <div id="finalSummary"></div>
+                            </div>
+
+                            <div class="alert alert-info">
+                                <i class="fas fa-whatsapp"></i>
+                                <div>
+                                    <strong>Processus de paiement:</strong>
+                                    <p>1. Vos documents seront d'abord envoyés sur WhatsApp pour validation</p>
+                                    <p>2. Vous recevrez ensuite le lien de paiement pour régler 80% du montant</p>
+                                    <p>3. Les 20% restants seront à payer à la livraison</p>
+                                </div>
+                            </div>
+
+                            <div class="terms-checkbox">
+                                <input type="checkbox" id="acceptTerms" required>
+                                <label for="acceptTerms">
+                                    J'accepte les conditions générales de service *
+                                </label>
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="button" class="btn btn-secondary" onclick="prevStep(2)">
+                                    <i class="fas fa-arrow-left"></i> Retour
+                                </button>
+                                <button type="submit" class="btn btn-primary btn-submit" id="submitBtn">
+                                    <i class="fas fa-paper-plane"></i> Envoyer la commande
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <!-- Progress Bar -->
+                    <div class="progress-bar">
+                        <div class="progress-step active" data-step="1">
+                            <div class="step-circle">1</div>
+                            <span>Documents</span>
+                        </div>
+                        <div class="progress-line"></div>
+                        <div class="progress-step" data-step="2">
+                            <div class="step-circle">2</div>
+                            <span>Configuration</span>
+                        </div>
+                        <div class="progress-line"></div>
+                        <div class="progress-step" data-step="3">
+                            <div class="step-circle">3</div>
+                            <span>Confirmation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="info-section">
+        <div class="container">
+            <h2>Comment ça fonctionne ?</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <i class="fas fa-upload"></i>
+                    <h3>1. Téléchargez</h3>
+                    <p>Envoyez vos documents PDF ou images</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-sliders-h"></i>
+                    <h3>2. Configurez</h3>
+                    <p>Choisissez les pages et le nombre d'exemplaires</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-whatsapp"></i>
+                    <h3>3. Validation WhatsApp</h3>
+                    <p>Recevez vos documents sur WhatsApp</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-credit-card"></i>
+                    <h3>4. Payez 80%</h3>
+                    <p>Paiement sécurisé avec KKiaPay</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-truck"></i>
+                    <h3>5. Livraison</h3>
+                    <p>Recevez vos documents et payez le reste</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>MINTCHI J. SERVICES</h3>
+                    <p>Votre partenaire de confiance pour l'impression professionnelle et l'immobilier à Cotonou.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/22901966985" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="services.html">Photocopie</a></li>
+                        <li><a href="services.html">Impression</a></li>
+                        <li><a href="immobilier.html">Immobilier</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-phone"></i> +229 01 96 69 64 85</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Cotonou, Bénin</li>
+                        <li><i class="fas fa-clock"></i> Lun-Sam: 8h-19h</li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Paiement Sécurisé</h4>
+                    <p>Nous acceptons les paiements via:</p>
+                    <div class="payment-methods">
+                        <img src="https://kkiapay.me/assets/images/logo.png" alt="KKiaPay" style="height: 30px;">
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 MINTCHI J. SERVICES. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/photocopie.js"></script>
+</body>
+</html>

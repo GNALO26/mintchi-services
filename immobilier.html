@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Immobilier - MINTCHI J. SERVICES</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/immobilier.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <div class="logo">
+                        <i class="fas fa-print"></i>
+                        <span>MINTCHI J. SERVICES</span>
+                    </div>
+                    <ul class="nav-menu" id="navMenu">
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="services.html">Photocopie</a></li>
+                        <li><a href="immobilier.html" class="active">Immobilier</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                    <div class="hamburger" id="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1><i class="fas fa-building"></i> Nos Biens Immobiliers</h1>
+            <p>Terrains, maisons et chambres disponibles</p>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="filter-section">
+        <div class="container">
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">
+                    <i class="fas fa-th"></i> Tout
+                </button>
+                <button class="filter-btn" data-filter="terrain">
+                    <i class="fas fa-map"></i> Terrains
+                </button>
+                <button class="filter-btn" data-filter="maison">
+                    <i class="fas fa-home"></i> Maisons
+                </button>
+                <button class="filter-btn" data-filter="chambre">
+                    <i class="fas fa-bed"></i> Chambres
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Properties Section -->
+    <section class="properties-section">
+        <div class="container">
+            <div class="properties-grid" id="propertiesGrid">
+                <!-- Terrains -->
+                <div class="property-card" data-category="terrain" data-id="1">
+                    <div class="property-image">
+                        <img src="assets/images/immobilier/terrains/terrain1.jpg" alt="Terrain à Akpakpa" 
+                             onerror="this.src='https://via.placeholder.com/400x300/2563eb/ffffff?text=Terrain+Akpakpa'">
+                        <div class="property-badge terrain-badge">À vendre</div>
+                    </div>
+                    <div class="property-content">
+                        <div class="property-category">
+                            <i class="fas fa-map"></i> Terrain
+                        </div>
+                        <h3>Terrain à Akpakpa</h3>
+                        <p class="property-location">
+                            <i class="fas fa-map-marker-alt"></i> Akpakpa, Cotonou
+                        </p>
+                        <div class="property-specs">
+                            <span><i class="fas fa-ruler-combined"></i> 500 m²</span>
+                            <span><i class="fas fa-file-contract"></i> Titre foncier</span>
+                        </div>
+                        <p class="property-description">
+                            Terrain viabilisé dans un quartier calme, proche des commodités. Idéal pour construction résidentielle.
+                        </p>
+                        <div class="property-footer">
+                            <div class="property-price">Prix à négocier</div>
+                            <button class="btn-view" onclick="viewProperty(1)">
+                                <i class="fas fa-eye"></i> Voir détails
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="property-card" data-category="terrain" data-id="2">
+                    <div class="property-image">
+                        <img src="assets/images/immobilier/terrains/terrain2.jpg" alt="Terrain à Godomey" 
+                             onerror="this.src='https://via.placeholder.com/400x300/2563eb/ffffff?text=Terrain+Godomey'">
+                        <div class="property-badge terrain-badge">À vendre</div>
+                    </div>
+                    <div class="property-content">
+                        <div class="property-category">
+                            <i class="fas fa-map"></i> Terrain
+                        </div>
+                        <h3>Grand Terrain à Godomey</h3>
+                        <p class="property-location">
+                            <i class="fas fa-map-marker-alt"></i> Godomey, Abomey-Calavi
+                        </p>
+                        <div class="property-specs">
+                            <span><i class="fas fa-ruler-combined"></i> 1000 m²</span>
+                            <span><i class="fas fa-file-contract"></i> Titre foncier</span>
+                        </div>
+                        <p class="property-description">
+                            Terrain spacieux parfait pour projet immobilier, bien situé avec accès facile.
+                        </p>
+                        <div class="property-footer">
+                            <div class="property-price">Prix à négocier</div>
+                            <button class="btn-view" onclick="viewProperty(2)">
+                                <i class="fas fa-eye"></i> Voir détails
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Maisons -->
+                <div class="property-card" data-category="maison" data-id="3">
+                    <div class="property-image">
+                        <img src="assets/images/immobilier/maisons/maison1.jpg" alt="Maison F4 Akpakpa" 
+                             onerror="this.src='https://via.placeholder.com/400x300/10b981/ffffff?text=Maison+F4'">
+                        <div class="property-badge maison-badge">À louer</div>
+                    </div>
+                    <div class="property-content">
+                        <div class="property-category">
+                            <i class="fas fa-home"></i> Maison
+                        </div>
+                        <h3>Belle Maison F4</h3>
+                        <p class="property-location">
+                            <i class="fas fa-map-marker-alt"></i> Akpakpa, Cotonou
+                        </p>
+                        <div class="property-specs">
+                            <span><i class="fas fa-bed"></i> 4 chambres</span>
+                            <span><i class="fas fa-bath"></i> 2 salles de bain</span>
+                            <span><i class="fas fa-car"></i> Parking</span>
+                        </div>
+                        <p class="property-description">
+                            Maison moderne avec salon spacieux, cuisine équipée, dans un quartier sécurisé.
+                        </p>
+                        <div class="property-footer">
+                            <div class="property-price">150 000 FCFA/mois</div>
+                            <button class="btn-view" onclick="viewProperty(3)">
+                                <i class="fas fa-eye"></i> Voir détails
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="property-card" data-category="maison" data-id="4">
+                    <div class="property-image">
+                        <img src="assets/images/immobilier/maisons/maison2.jpg" alt="Villa Cadjehoun" 
+                             onerror="this.src='https://via.placeholder.com/400x300/10b981/ffffff?text=Villa+Cadjehoun'">
+                        <div class="property-badge maison-badge">À louer</div>
+                    </div>
+                    <div class="property-content">
+                        <div class="property-category">
+                            <i class="fas fa-home"></i> Maison
+                        </div>
+                        <h3>Villa Moderne Cadjehoun</h3>
+                        <p class="property-location">
+                            <i class="fas fa-map-marker-alt"></i> Cadjehoun, Cotonou
+                        </p>
+                        <div class="property-specs">
+                            <span><i class="fas fa-bed"></i> 5 chambres</span>
+                            <span><i class="fas fa-bath"></i> 3 salles de bain</span>
+                            <span><i class="fas fa-swimming-pool"></i> Piscine</span>
+                        </div>
+                        <p class="property-description">
+                            Villa haut standing avec piscine, jardin, proche de l'aéroport.
+                        </p>
+                        <div class="property-footer">
+                            <div class="property-price">300 000 FCFA/mois</div>
+                            <button class="btn-view" onclick="viewProperty(4)">
+                                <i class="fas fa-eye"></i> Voir détails
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chambres -->
+                <div class="property-card" data-category="chambre" data-id="5">
+                    <div class="property-image">
+                        <img src="assets/images/immobilier/chambres/chambre1.jpg" alt="Chambre Fidjrossè" 
+                             onerror="this.src='https://via.placeholder.com/400x300/f59e0b/ffffff?text=Chambre+Fidjrosse'">
+                        <div class="property-badge chambre-badge">À louer</div>
+                    </div>
+                    <div class="property-content">
+                        <div class="property-category">
+                            <i class="fas fa-bed"></i> Chambre
+                        </div>
+                        <h3>Chambre Meublée Fidjrossè</h3>
+                        <p class="property-location">
+                            <i class="fas fa-map-marker-alt"></i> Fidjrossè, Cotonou
+                        </p>
+                        <div class="property-specs">
+                            <span><i class="fas fa-couch"></i> Meublée</span>
+                            <span><i class="fas fa-wifi"></i> WiFi</span>
+                            <span><i class="fas fa-plug"></i> Électricité</span>
+                        </div>
+                        <p class="property-description">
+                            Chambre confortable avec salle de bain privée, cuisine partagée. Idéale pour étudiant ou professionnel.
+                        </p>
+                        <div class="property-footer">
+                            <div class="property-price">35 000 FCFA/mois</div>
+                            <button class="btn-view" onclick="viewProperty(5)">
+                                <i class="fas fa-eye"></i> Voir détails
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="property-card" data-category="chambre" data-id="6">
+                    <div class="property-image">
+                        <img src="assets/images/immobilier/chambres/chambre2.jpg" alt="Studio Haie Vive" 
+                             onerror="this.src='https://via.placeholder.com/400x300/f59e0b/ffffff?text=Studio+Haie+Vive'">
+                        <div class="property-badge chambre-badge">À louer</div>
+                    </div>
+                    <div class="property-content">
+                        <div class="property-category">
+                            <i class="fas fa-bed"></i> Chambre
+                        </div>
+                        <h3>Studio Indépendant Haie Vive</h3>
+                        <p class="property-location">
+                            <i class="fas fa-map-marker-alt"></i> Haie Vive, Cotonou
+                        </p>
+                        <div class="property-specs">
+                            <span><i class="fas fa-couch"></i> Meublé</span>
+                            <span><i class="fas fa-utensils"></i> Kitchenette</span>
+                            <span><i class="fas fa-bath"></i> Salle de bain</span>
+                        </div>
+                        <p class="property-description">
+                            Studio moderne tout équipé, proche des universités et commerces.
+                        </p>
+                        <div class="property-footer">
+                            <div class="property-price">50 000 FCFA/mois</div>
+                            <button class="btn-view" onclick="viewProperty(6)">
+                                <i class="fas fa-eye"></i> Voir détails
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Property Modal -->
+    <div class="modal" id="propertyModal">
+        <div class="modal-overlay" onclick="closeModal()"></div>
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="modal-gallery">
+                <div class="main-image">
+                    <img id="modalMainImage" src="" alt="">
+                    <button class="gallery-nav prev" onclick="prevImage()">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="gallery-nav next" onclick="nextImage()">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                <div class="thumbnail-list" id="thumbnailList"></div>
+            </div>
+
+            <div class="modal-details" id="modalDetails">
+                <!-- Content will be filled by JavaScript -->
+            </div>
+
+            <div class="modal-contact">
+                <a href="https://wa.me/22901966985" target="_blank" class="btn btn-primary btn-large">
+                    <i class="fab fa-whatsapp"></i> Contacter par WhatsApp
+                </a>
+                <a href="tel:+22901966985" class="btn btn-secondary btn-large">
+                    <i class="fas fa-phone"></i> Appeler maintenant
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>MINTCHI J. SERVICES</h3>
+                    <p>Votre partenaire de confiance pour l'impression professionnelle et l'immobilier à Cotonou.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/22901966985" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="services.html">Photocopie</a></li>
+                        <li><a href="services.html">Impression</a></li>
+                        <li><a href="immobilier.html">Immobilier</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-phone"></i> +229 01 96 69 64 85</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Cotonou, Bénin</li>
+                        <li><i class="fas fa-clock"></i> Lun-Sam: 8h-19h</li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Paiement Sécurisé</h4>
+                    <p>Nous acceptons les paiements via:</p>
+                    <div class="payment-methods">
+                        <img src="https://kkiapay.me/assets/images/logo.png" alt="KKiaPay" style="height: 30px;">
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 MINTCHI J. SERVICES. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/immobilier.js"></script>
+</body>
+</html>

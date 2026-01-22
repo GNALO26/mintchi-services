@@ -1,0 +1,83 @@
+# Configuration Netlify pour MINTCHI J. SERVICES
+
+[build]
+  publish = "."
+  command = "echo 'No build command needed for static site'"
+
+# Headers pour la sécurité et les performances
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), microphone=(), camera=()"
+    
+# Headers pour les assets (cache)
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Headers pour les images
+[[headers]]
+  for = "*.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+    
+[[headers]]
+  for = "*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+
+[[headers]]
+  for = "*.svg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+
+# Redirections
+[[redirects]]
+  from = "/photocopie"
+  to = "/services.html"
+  status = 301
+
+[[redirects]]
+  from = "/biens"
+  to = "/immobilier.html"
+  status = 301
+
+# 404 page
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 404
+
+# Forms (Netlify Forms)
+# Les formulaires HTML avec l'attribut netlify seront automatiquement traités
+
+# Plugins Netlify (optionnels)
+[[plugins]]
+  package = "@netlify/plugin-lighthouse"
+
+# Variables d'environnement (à configurer dans Netlify UI)
+# KKIAPAY_PUBLIC_KEY = "votre_cle_publique"
+# KKIAPAY_PRIVATE_KEY = "votre_cle_privee" (pour les functions)
+
+# Compression
+[build.processing]
+  skip_processing = false
+
+[build.processing.css]
+  bundle = true
+  minify = true
+
+[build.processing.js]
+  bundle = true
+  minify = true
+
+[build.processing.html]
+  pretty_urls = true
+
+[build.processing.images]
+  compress = true
